@@ -34,9 +34,6 @@ namespace Bonsai.Core
     /// </summary>
     public BehaviourNode[] Nodes { get { return allNodes; } }
 
-    [SerializeField, HideInInspector]
-    public Blackboard blackboard;
-
     /// <summary>
     /// The first node in the tree. 
     /// Also the entry point to run the tree.
@@ -356,11 +353,6 @@ namespace Bonsai.Core
       var cloneBt = CreateInstance<BehaviourTree>();
       cloneBt.name = sourceTree.name;
 
-      if (sourceTree.blackboard)
-      {
-        cloneBt.blackboard = Instantiate(sourceTree.blackboard);
-      }
-
       // Source tree nodes should already be in pre-order.
       cloneBt.SetNodes(sourceTree.Nodes.Select(n => Instantiate(n)));
 
@@ -434,18 +426,6 @@ namespace Bonsai.Core
     }
 
 #if UNITY_EDITOR
-
-    [ContextMenu("Add Blackboard")]
-    void AddBlackboardAsset()
-    {
-      if (blackboard == null && !EditorApplication.isPlaying)
-      {
-        blackboard = CreateInstance<Blackboard>();
-        blackboard.hideFlags = HideFlags.HideInHierarchy;
-        AssetDatabase.AddObjectToAsset(blackboard, this);
-      }
-    }
-    
     public void OnValidate()
     {
       var hasNullable = allNodes.Any(node => node == null);

@@ -14,10 +14,7 @@ namespace Tests
 
     public override void OnStart()
     {
-      if (!Blackboard.Contains(kHistoryKey))
-      {
-        Blackboard.Set(kHistoryKey, new List<int>());
-      }
+      
     }
 
     public override Status Run()
@@ -32,7 +29,7 @@ namespace Tests
 
     public override void OnEnter()
     {
-      Blackboard.Get<List<int>>(kHistoryKey).Add(PreOrderIndex);
+
     }
 
     public TestNode WithUtility(float utility)
@@ -46,7 +43,6 @@ namespace Tests
   {
     public static void StartBehaviourTree(BehaviourTree tree)
     {
-      tree.blackboard = ScriptableObject.CreateInstance<Blackboard>();
       tree.Start();
       tree.BeginTraversal();
     }

@@ -179,9 +179,6 @@ namespace Tests
 
       var result = Helper.RunBehaviourTree(tree);
       Assert.AreEqual(BehaviourNode.Status.Success, result);
-
-      var expectedTraversal = new List<int>(new int[] { beta.PreOrderIndex, delta.PreOrderIndex, alpha.PreOrderIndex });
-      Assert.AreEqual(expectedTraversal, tree.blackboard.Get<List<int>>(TestNode.kHistoryKey));
     }
 
     [Test]

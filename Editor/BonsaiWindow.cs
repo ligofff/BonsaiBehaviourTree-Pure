@@ -495,10 +495,6 @@ namespace Bonsai.Designer
       BonsaiWindow w = OpenTree(tree);
       if (w)
       {
-        // If a tree asset was created but has no blackboard, add one upon opening.
-        // This is for convenience.
-        BonsaiSaver.AddBlackboardIfMissing(tree);
-
         w.SwitchToViewModeIfRequired();
       }
 

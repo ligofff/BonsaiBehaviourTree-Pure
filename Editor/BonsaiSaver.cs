@@ -92,15 +92,7 @@ namespace Bonsai.Designer
     public static BehaviourTree CreateBehaviourTree()
     {
       var bt = ScriptableObject.CreateInstance<BehaviourTree>();
-      bt.blackboard = CreateBlackboard();
       return bt;
-    }
-
-    private static Blackboard CreateBlackboard()
-    {
-      var bb = ScriptableObject.CreateInstance<Blackboard>();
-      bb.hideFlags = HideFlags.HideInHierarchy;
-      return bb;
     }
 
     // Load a behaviour tree at the given path. The path is aboslute but the file must be under the Asset's folder.
@@ -109,23 +101,7 @@ namespace Bonsai.Designer
       string path = AssetPath(absolutePath);
       var tree = AssetDatabase.LoadAssetAtPath<BehaviourTree>(path);
 
-      // Add a blackboard if missing when opening in editor.
-      AddBlackboardIfMissing(tree);
-
       return tree;
-    }
-
-    public static void AddBlackboardIfMissing(BehaviourTree tree)
-    {
-      if (tree && (tree.blackboard == null || !AssetDatabase.Contains(tree.blackboard)))
-      {
-        if (tree.blackboard == null)
-        {
-          tree.blackboard = CreateBlackboard();
-        }
-
-        AssetDatabase.AddObjectToAsset(tree.blackboard, tree);
-      }
     }
 
     // Adds the tree to the database and saves the nodes to the database.
@@ -133,7 +109,6 @@ namespace Bonsai.Designer
     {
       // Save tree and black board assets
       AssetDatabase.CreateAsset(canvas.Tree, path);
-      AssetDatabase.AddObjectToAsset(canvas.Tree.blackboard, canvas.Tree);
 
       // Save nodes.
       SaveTree(meta, canvas);
@@ -142,9 +117,6 @@ namespace Bonsai.Designer
     // Saves the current tree and nodes.
     private void SaveTree(TreeMetaData meta, BonsaiCanvas canvas)
     {
-      // If the blackboard is not yet in the database, then add.
-      AddBlackboardIfMissing(canvas.Tree);
-
       var canvasBehaviours = canvas.Nodes.Select(n => n.Behaviour);
 
       AddNewNodeAssets(canvas.Tree, canvasBehaviours);

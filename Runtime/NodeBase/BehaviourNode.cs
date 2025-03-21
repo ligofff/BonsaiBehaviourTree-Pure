@@ -141,14 +141,6 @@ namespace Bonsai.Core
     }
 
     /// <summary>
-    /// Gets the blackboard used by the parent tree.
-    /// </summary>
-    protected Blackboard Blackboard
-    {
-      get { return treeOwner.blackboard; }
-    }
-
-    /// <summary>
     /// The game object associated with the tree of this node.
     /// </summary>
     protected GameObject Actor

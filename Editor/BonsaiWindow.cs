@@ -182,22 +182,31 @@ namespace Bonsai.Designer
     private void SwitchToViewModeIfRequired()
     {
       // Cannot go to view mode.
-      if (!EditorApplication.isPlaying || !Selection.activeGameObject)
-      {
-        return;
-      }
+      
+      if (!EditorApplication.isPlaying) return;
+      
+      if (!Selection.activeObject) return;
 
-      var btc = Selection.activeGameObject.GetComponent<BonsaiTreeComponent>();
-      BehaviourTree treeToView = btc ? btc.Tree : null;
+      BehaviourTree tree;
+
+      if (Selection.activeObject is GameObject go)
+      {
+        var btc = go.GetComponent<BonsaiTreeComponent>();
+        tree = btc ? btc.Tree : null;
+      }
+      else
+      {
+        tree = Selection.activeObject is BehaviourTree tr ? tr : null;
+      }
 
       // There must be a non-null tree to view,
       // it must be a different tree than the active tree for this window,
       // and must not be opened somewhere else.
-      if (treeToView && Tree != treeToView)
+      if (tree && Tree != tree)
       {
         var windows = Resources.FindObjectsOfTypeAll<BonsaiWindow>();
 
-        bool alreadyInView = windows.Any(w => w.Tree == treeToView);
+        bool alreadyInView = windows.Any(w => w.Tree == tree);
 
         if (alreadyInView)
         {
@@ -209,12 +218,12 @@ namespace Bonsai.Designer
         // Have the window without a set tree to view the tree selected.
         if (window)
         {
-          window.SetTree(treeToView, BonsaiEditor.Mode.View);
+          window.SetTree(tree, BonsaiEditor.Mode.View);
         }
         else
         {
           // View tree in this window.
-          SetTree(treeToView, BonsaiEditor.Mode.View);
+          SetTree(tree, BonsaiEditor.Mode.View);
         }
 
       }

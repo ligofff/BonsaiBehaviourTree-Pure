@@ -1,7 +1,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Join the chat at https://gitter.im/BonsaiBehaviourTree/community](https://badges.gitter.im/BonsaiBehaviourTree/community.svg)](https://gitter.im/BonsaiBehaviourTree/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## Bonsai Behaviour Tree
+> [!WARNING]  
+> This is WIP fork. I'm planning to rewrite it to pure C# classes instead of unity's objects. Of course, thanks [luis-l](https://github.com/luis-l) for it's wonderful base project!
+
+## Bonsai Behaviour Tree (Obsolete description)
 
 ![Bonsai Logo](https://i.imgur.com/WTxGOZC.png) 
 

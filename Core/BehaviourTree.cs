@@ -163,6 +163,16 @@ namespace Bonsai.Core
     {
       Interrupt(Root);
     }
+    
+    /// <summary>
+    /// Resets the tree.
+    /// </summary>
+    public void ResetTree()
+    {
+      Interrupt();
+      Start();
+      BeginTraversal();
+    }
 
     /// <summary>
     /// Add the timer so it gets ticked whenever the tree ticks.

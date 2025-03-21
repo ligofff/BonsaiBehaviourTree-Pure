@@ -16,6 +16,15 @@ namespace Bonsai.Designer
       window.titleContent = new GUIContent("Bonsai");
       window.Show();
     }
+    
+    public static BonsaiWindow GetNewWindow(BehaviourTree tree, BonsaiEditor.Mode mode)
+    {
+      var window = CreateInstance<BonsaiWindow>();
+      window.titleContent = new GUIContent("Bonsai");
+      window.Show();
+      window.SetTree(tree, mode);
+      return window;
+    }
 
     public const float toolbarHeight = 20;
 

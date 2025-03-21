@@ -1,4 +1,5 @@
 ﻿
+/*
 using System;
 using Bonsai.Core;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Bonsai.Designer
   {
     public static void ChangeType(BonsaiNode node, Type newType)
     {
-      var newBehaviour = ScriptableObject.CreateInstance(newType) as BehaviourNode;
+      var newBehaviour =  ScriptableObject.CreateInstance(newType) as BehaviourNode;
       node.SetBehaviour(newBehaviour, NodeIcon(newType));
     }
 
@@ -20,3 +21,4 @@ namespace Bonsai.Designer
     }
   }
 }
+*/

@@ -1,4 +1,4 @@
-﻿#if !ODIN_INSPECTOR
+﻿/*#if !ODIN_INSPECTOR
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -115,4 +115,4 @@ namespace Bonsai.Designer
     }
 }
 
-#endif
+#endif*/

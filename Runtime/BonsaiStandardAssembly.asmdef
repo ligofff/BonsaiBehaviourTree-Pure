@@ -1,8 +1,7 @@
 {
-    "name": "BonsaiStandardAssembly",
-    "references": [
-        "GUID:e663252ae8cdac9448492a619a23dbb5"
-    ],
+    "name": "com.ligofff.BonsaiBehaviourTree-Pure",
+    "rootNamespace": "",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

@@ -1,10 +1,10 @@
 {
     "name": "BonsaiTestsAssembly",
+    "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "BonsaiAssembly",
-        "BonsaiStandardAssembly"
+        "com.ligofff.BonsaiBehaviourTree-Pure"
     ],
     "includePlatforms": [
         "Editor"

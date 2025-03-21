@@ -1,0 +1,27 @@
+{
+  "name": "com.ligofff.BonsaiBehaviourTree-Pure",
+  "displayName": "Ligofff - Bonsai Behaviour Tree Pure",
+  "version": "0.1.0",
+  "unity": "2022.2",
+  "description": "An advanced behaviour tree solution for the Unity game engine",
+  "keywords": [
+    "unity",
+	"unity3d",
+	"upm",
+    "ligofff",
+    "utility"
+  ],
+  "homepage": "https://github.com/ligofff/BonsaiBehaviourTree-Pure.git",
+  "bugs": {
+    "url": "https://github.com/ligofff/BonsaiBehaviourTree-Pure/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ligofff/BonsaiBehaviourTree-Pure.git"
+  },
+  "license": "MIT",
+  "author": "Ligofff (https://ligofff.com)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

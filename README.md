@@ -3,6 +3,13 @@
 > [!WARNING]  
 > This is WIP fork. I'm planning to rewrite it to pure C# classes instead of unity's objects. Of course, thanks [luis-l](https://github.com/luis-l) for it's wonderful base project!
 
+### Install via GIT URL
+
+Go to ```Package Manager``` -> ```Add package from GIT url...``` -> Enter ```https://github.com/ligofff/BonsaiBehaviourTree-Pure.git``` -> Click ```Add```
+
+You will need to have Git installed and available in your system's PATH.
+
+
 ## Bonsai Behaviour Tree (Obsolete description)
 
 ![Bonsai Logo](https://i.imgur.com/WTxGOZC.png) 

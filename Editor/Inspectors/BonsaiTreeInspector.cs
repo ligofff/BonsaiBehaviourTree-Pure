@@ -36,6 +36,11 @@ namespace Bonsai.Designer
 
       EditorGUILayout.LabelField("Behaviour Tree", tree.name);
       EditorGUILayout.Space();
+      
+      if (GUILayout.Button("Open Window"))
+      {
+        var window = BonsaiWindow.GetNewWindow(tree, Application.isPlaying ? BonsaiEditor.Mode.View : BonsaiEditor.Mode.Edit);
+      }
 
       if (bb)
       {

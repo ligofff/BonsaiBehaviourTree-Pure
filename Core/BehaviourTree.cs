@@ -13,6 +13,8 @@ namespace Bonsai.Core
     // Does not tick branches under parallel nodes since those use their own parallel iterators.
     private BehaviourIterator mainIterator;
 
+    public BehaviourIterator MainIterator => mainIterator;
+
     // Active timers that tick while the tree runs.
     private Utility.UpdateList<Utility.Timer> activeTimers;
 

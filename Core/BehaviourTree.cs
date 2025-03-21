@@ -331,6 +331,16 @@ namespace Bonsai.Core
 
     public static BehaviourNode GetInstanceVersion(BehaviourTree tree, BehaviourNode original)
     {
+      if (original == null)
+      {
+        throw new NullReferenceException($"original node is null! {tree.name}");
+      }
+      
+      if (tree == null)
+      {
+        throw new NullReferenceException($"tree is null! {original.name}");
+      }
+      
       int index = original.preOrderIndex;
       return tree.allNodes[index];
     }
@@ -433,6 +443,15 @@ namespace Bonsai.Core
         blackboard = CreateInstance<Blackboard>();
         blackboard.hideFlags = HideFlags.HideInHierarchy;
         AssetDatabase.AddObjectToAsset(blackboard, this);
+      }
+    }
+    
+    public void OnValidate()
+    {
+      var hasNullable = allNodes.Any(node => node == null);
+      if (hasNullable)
+      {
+        allNodes = allNodes.Where(node => node != null).ToArray();
       }
     }
 

@@ -186,6 +186,12 @@ namespace Bonsai.Designer
 
       foreach (BehaviourNode behaviour in behaviours)
       {
+        if (behaviour == null)
+        {
+          Debug.LogError($"Behaviour is null!");
+          continue;
+        }
+        
         BonsaiNode node = ReconstructEditorNode(behaviour);
         nodeMap.Add(behaviour, node);
       }
@@ -211,6 +217,13 @@ namespace Bonsai.Designer
         for (int i = 0; i < childCount; i++)
         {
           BehaviourNode child = node.Behaviour.GetChildAt(i);
+
+          if (child == null)
+          {
+            Debug.LogError("Child is null!");
+            continue;
+          }
+          
           nodeMap[child].SetParent(node);
         }
       }

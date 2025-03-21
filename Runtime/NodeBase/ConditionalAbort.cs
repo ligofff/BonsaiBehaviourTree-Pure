@@ -124,7 +124,7 @@ namespace Bonsai.Core
       {
         GetCompositeParent(this, out BehaviourNode compositeParent, out int branchIndex);
 
-        if (compositeParent && compositeParent.IsComposite())
+        if (compositeParent != null && compositeParent.IsComposite())
         {
           bool isLowerPriority = (compositeParent as Composite).CurrentChildIndex > branchIndex;
           if (isLowerPriority)
@@ -143,7 +143,7 @@ namespace Bonsai.Core
       compositeParent = child.Parent;
       branchIndex = child.indexOrder;
 
-      while (compositeParent && !compositeParent.IsComposite())
+      while (compositeParent != null && !compositeParent.IsComposite())
       {
         branchIndex = compositeParent.indexOrder;
         compositeParent = compositeParent.Parent;

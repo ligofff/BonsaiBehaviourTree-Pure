@@ -31,7 +31,7 @@ namespace Bonsai.Core
     {
       CurrentChildIndex = 0;
       var next = CurrentChild();
-      if (next)
+      if (next != null)
       {
         Iterator.Traverse(next);
       }

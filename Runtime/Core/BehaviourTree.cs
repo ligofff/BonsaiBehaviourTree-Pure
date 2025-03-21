@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 namespace Bonsai.Core
 {
-  [CreateAssetMenu(fileName = "BonsaiBT", menuName = "Bonsai/Behaviour Tree")]
-  public class BehaviourTree : ScriptableObject
+  public class BehaviourTree 
   {
     // The iterator that ticks branches under the tree root.
     // Does not tick branches under parallel nodes since those use their own parallel iterators.
@@ -51,6 +49,8 @@ namespace Bonsai.Core
 
     public Func<object> actorGetter;
 
+    public string treeName;
+    
     /// <summary>
     /// The maximum height of the tree. 
     /// This is the height measured from the root to the furthest leaf.
@@ -312,79 +312,6 @@ namespace Bonsai.Core
     public BehaviourNode.Status LastStatus()
     {
       return mainIterator.LastExecutedStatus;
-    }
-
-    /// <summary>
-    /// Gets the instantiated copy version of a behaviour node from its original version.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="tree">The instantiated tree.</param>
-    /// <param name="original">The node in the original tree.</param>
-    /// <returns></returns>
-    public static T GetInstanceVersion<T>(BehaviourTree tree, BehaviourNode original) where T : BehaviourNode
-    {
-      return GetInstanceVersion(tree, original) as T;
-    }
-
-    public static BehaviourNode GetInstanceVersion(BehaviourTree tree, BehaviourNode original)
-    {
-      if (original == null)
-      {
-        throw new NullReferenceException($"original node is null! {tree.name}");
-      }
-      
-      if (tree == null)
-      {
-        throw new NullReferenceException($"tree is null! {original.name}");
-      }
-      
-      int index = original.preOrderIndex;
-      return tree.allNodes[index];
-    }
-
-    /// <summary>
-    /// Deep copies the tree.
-    /// </summary>
-    /// <param name="sourceTree">The source tree to clone.</param>
-    /// <returns>The cloned tree.</returns>
-    public static BehaviourTree Clone(BehaviourTree sourceTree)
-    {
-      // The tree clone will be blank to start. We will duplicate blackboard and nodes.
-      var cloneBt = CreateInstance<BehaviourTree>();
-      cloneBt.name = sourceTree.name;
-
-      // Source tree nodes should already be in pre-order.
-      cloneBt.SetNodes(sourceTree.Nodes.Select(n => Instantiate(n)));
-
-      // Relink children and parents for the cloned nodes.
-      int maxCloneNodeCount = cloneBt.allNodes.Length;
-      for (int i = 0; i < maxCloneNodeCount; ++i)
-      {
-        BehaviourNode nodeSource = sourceTree.allNodes[i];
-        BehaviourNode copyNode = GetInstanceVersion(cloneBt, nodeSource);
-
-        if (copyNode.IsComposite())
-        {
-          var copyComposite = copyNode as Composite;
-          copyComposite.SetChildren(
-            Enumerable.Range(0, nodeSource.ChildCount())
-            .Select(childIndex => GetInstanceVersion(cloneBt, nodeSource.GetChildAt(childIndex)))
-            .ToArray());
-        }
-
-        else if (copyNode.IsDecorator() && nodeSource.ChildCount() == 1)
-        {
-          var copyDecorator = copyNode as Decorator;
-          copyDecorator.SetChild(GetInstanceVersion(cloneBt, nodeSource.GetChildAt(0))); ;
-        }
-      }
-
-      foreach (BehaviourNode node in cloneBt.allNodes)
-      {
-        node.OnCopy();
-      }
-
-      return cloneBt;
     }
 
     /// <summary>

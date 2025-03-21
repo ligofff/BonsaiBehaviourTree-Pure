@@ -6,7 +6,7 @@ namespace Bonsai.Core
   /// <summary>
   /// The base class for all behaviour nodes.
   /// </summary>
-  public abstract class BehaviourNode : ScriptableObject, IIterableNode<BehaviourNode>
+  public abstract class BehaviourNode : IIterableNode<BehaviourNode>
   {
     /// <summary>
     /// The return status of a node execution.

@@ -15,9 +15,9 @@ namespace Bonsai.Standard
 
     public override void OnStart()
     {
-      if (subtreeAsset)
+      if (subtreeAsset != null)
       {
-        RunningSubTree = BehaviourTree.Clone(subtreeAsset);
+        RunningSubTree = subtreeAsset;
         RunningSubTree.actor = Actor;
         RunningSubTree.actorGetter = Tree.actorGetter;
         RunningSubTree.Start();
@@ -39,7 +39,7 @@ namespace Bonsai.Standard
 
     public override Status Run()
     {
-      if (RunningSubTree)
+      if (RunningSubTree != null)
       {
         RunningSubTree.Update();
         return RunningSubTree.IsRunning()
@@ -53,9 +53,9 @@ namespace Bonsai.Standard
 
     public override void Description(StringBuilder builder)
     {
-      if (subtreeAsset)
+      if (subtreeAsset != null)
       {
-        builder.AppendFormat("Include {0}", subtreeAsset.name);
+        builder.AppendFormat("Include {0}", subtreeAsset.treeName);
       }
       else
       {

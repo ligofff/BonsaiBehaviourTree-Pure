@@ -25,15 +25,6 @@ namespace Bonsai.Standard
       return Status.Success;
     }
 
-    public override void OnCopy()
-    {
-      // Only get the instance version of interruptables under the tree root.
-      linkedInterruptables = linkedInterruptables
-        .Where(i => i.PreOrderIndex != kInvalidOrder)
-        .Select(i => BehaviourTree.GetInstanceVersion<Interruptable>(Tree, i))
-        .ToList();
-    }
-
     public override BehaviourNode[] GetReferencedNodes()
     {
       return linkedInterruptables.ToArray();

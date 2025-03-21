@@ -86,16 +86,6 @@ namespace Bonsai.Standard
 
       childRan = false;
     }
-
-    public override void OnCopy()
-    {
-      // Only get the instance version of guards under the tree root.
-      linkedGuards = linkedGuards
-        .Where(i => i.PreOrderIndex != kInvalidOrder)
-        .Select(i => BehaviourTree.GetInstanceVersion<Guard>(Tree, i))
-        .ToList();
-    }
-
     public override BehaviourNode[] GetReferencedNodes()
     {
       return linkedGuards.ToArray();

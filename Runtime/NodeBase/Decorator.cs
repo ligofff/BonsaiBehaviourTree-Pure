@@ -24,7 +24,7 @@ namespace Bonsai.Core
     /// </summary>
     public override void OnEnter()
     {
-      if (child)
+      if (child != null)
       {
         Iterator.Traverse(child);
       }
@@ -53,7 +53,7 @@ namespace Bonsai.Core
     {
       // Propogate composite parent exit through decorator chain only.
       // No need to call for composite children since composite nodes handle that.
-      if (child && child.IsDecorator())
+      if (child != null && child.IsDecorator())
       {
         child.OnCompositeParentExit();
       }
@@ -66,7 +66,7 @@ namespace Bonsai.Core
 
     public sealed override int ChildCount()
     {
-      return child ? 1 : 0;
+      return child != null ? 1 : 0;
     }
 
     public sealed override BehaviourNode GetChildAt(int index)

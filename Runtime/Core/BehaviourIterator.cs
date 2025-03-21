@@ -106,7 +106,7 @@ namespace Bonsai.Core
 
     private void OnChildEnter(BehaviourNode node)
     {
-      if (node.Parent)
+      if (node.Parent != null)
       {
         LastChildExitStatus = null;
         node.Parent.OnChildEnter(node.indexOrder);
@@ -115,7 +115,7 @@ namespace Bonsai.Core
 
     private void OnChildExit(BehaviourNode node, BehaviourNode.Status s)
     {
-      if (node.Parent)
+      if (node.Parent != null)
       {
         node.Parent.OnChildExit(node.indexOrder, s);
         LastChildExitStatus = s;
@@ -145,7 +145,7 @@ namespace Bonsai.Core
     public void AbortRunningChildBranch(BehaviourNode parent, int abortBranchIndex)
     {
       // If the iterator is inactive, ignore.
-      if (IsRunning && parent)
+      if (IsRunning && parent != null)
       {
         int terminatingIndex = parent.preOrderIndex;
 
@@ -185,9 +185,9 @@ namespace Bonsai.Core
     {
       // Keep interrupting up to the parent of subtree. 
       // The parent is not interrupted; subtree node is interrupted.
-      if (subtree)
+      if (subtree != null)
       {
-        int parentIndex = subtree.Parent ? subtree.Parent.PreOrderIndex : BehaviourNode.kInvalidOrder;
+        int parentIndex = subtree.Parent != null ? subtree.Parent.PreOrderIndex : BehaviourNode.kInvalidOrder;
         while (traversal.Count != 0 && traversal.Peek() != parentIndex)
         {
           var node = PopNode();

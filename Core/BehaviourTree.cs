@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -48,6 +49,8 @@ namespace Bonsai.Core
     /// <para>Field is optional. The tree core can run without the actor.</para>
     /// </summary>
     public GameObject actor;
+
+    public Func<object> actorGetter;
 
     /// <summary>
     /// The maximum height of the tree. 

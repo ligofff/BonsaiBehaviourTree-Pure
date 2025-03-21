@@ -19,6 +19,7 @@ namespace Bonsai.Standard
       {
         RunningSubTree = BehaviourTree.Clone(subtreeAsset);
         RunningSubTree.actor = Actor;
+        RunningSubTree.actorGetter = Tree.actorGetter;
         RunningSubTree.Start();
       }
     }

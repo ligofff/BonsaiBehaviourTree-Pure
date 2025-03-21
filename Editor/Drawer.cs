@@ -1,4 +1,5 @@
 ﻿
+using Plugins.BonsaiBehaviourTree_master.Core;
 using UnityEngine;
 using UnityEditor;
 
@@ -126,6 +127,11 @@ namespace Bonsai.Designer
 
     private static Color NodeTypeColor(BonsaiNode node)
     {
+      if (node.Behaviour is INodeColorProvider colorProvider)
+      {
+        return colorProvider.Color;
+      }
+
       if (node.Behaviour is Core.Task)
       {
         return BonsaiPreferences.Instance.taskColor;

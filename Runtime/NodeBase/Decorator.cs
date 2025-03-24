@@ -37,7 +37,7 @@ namespace Bonsai.Core
     /// before Tree Start() and never during Tree Update()
     /// </para>
     /// </summary>
-    public void SetChild(BehaviourNode node)
+    public Decorator SetChild(BehaviourNode node)
     {
       child = node;
       if (child != null)
@@ -45,6 +45,8 @@ namespace Bonsai.Core
         child.Parent = this;
         child.indexOrder = 0;
       }
+
+      return this;
     }
 
     public sealed override void OnAbort(int childIndex) { }

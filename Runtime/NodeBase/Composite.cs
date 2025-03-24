@@ -59,7 +59,7 @@ namespace Bonsai.Core
     /// <note>To clear children references, pass an empty array.</note>
     /// </summary>
     /// <param name="nodes">The children for the node. Should not be null.</param>
-    public void SetChildren(BehaviourNode[] nodes)
+    public Composite SetChildren(params BehaviourNode[] nodes)
     {
       children = nodes;
       // Set index orders.
@@ -73,6 +73,8 @@ namespace Bonsai.Core
       {
         child.Parent = this;
       }
+
+      return this;
     }
 
     /// <summary>

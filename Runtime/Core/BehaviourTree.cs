@@ -62,7 +62,7 @@ namespace Bonsai.Core
     {
       if (Root == null)
       {
-        Debug.LogWarning("Cannot start tree with a null root.");
+        Debug.LogError("Cannot start tree with a null root.");
         return;
       }
 
@@ -109,7 +109,7 @@ namespace Bonsai.Core
     /// Sets the tree nodes. Must be in pre-order.
     /// </summary>
     /// <param name="node">The nodes in pre-order.</param>
-    public void SetNodes(IEnumerable<BehaviourNode> nodes)
+    private void SetNodes(IEnumerable<BehaviourNode> nodes)
     {
       allNodes = nodes.ToArray();
       int preOrderIndex = 0;

@@ -1,30 +1,29 @@
-﻿
-using System.Text;
+﻿using System.Text;
 using Bonsai.Core;
 
 namespace Bonsai.Standard
 {
-  [BonsaiNode("Tasks/", "Timer")]
-  public class Wait : Task
-  {
-    [ShowAtRuntime]
-    [UnityEngine.SerializeField]
-    public Utility.Timer timer = new Utility.Timer();
-
-    public override void OnEnter()
+    [BonsaiNode("Tasks/", "Timer")]
+    public class Wait : Task
     {
-      timer.Start();
-    }
+        [ShowAtRuntime]
+        [UnityEngine.SerializeField]
+        public Utility.Timer timer = new Utility.Timer();
 
-    public override Status Run()
-    {
-      timer.Update(UnityEngine.Time.deltaTime);
-      return timer.IsDone ? Status.Success : Status.Running;
-    }
+        public override void OnEnter()
+        {
+            timer.Start();
+        }
 
-    public override void Description(StringBuilder builder)
-    {
-      builder.AppendFormat("Wait for {0:0.00}s", timer.interval);
+        public override Status Run()
+        {
+            timer.Update(UnityEngine.Time.deltaTime);
+            return timer.IsDone ? Status.Success : Status.Running;
+        }
+
+        public override void Description(StringBuilder builder)
+        {
+            builder.AppendFormat("Wait for {0:0.00}s", timer.interval);
+        }
     }
-  }
 }

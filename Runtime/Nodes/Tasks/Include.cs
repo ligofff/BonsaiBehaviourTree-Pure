@@ -1,65 +1,62 @@
-﻿
-using System.Text;
+﻿using System.Text;
 using Bonsai.Core;
 using UnityEngine;
 
 namespace Bonsai.Standard
 {
-  [BonsaiNode("Tasks/", "TreeIcon")]
-  public class Include : Task
-  {
-    [Tooltip("The sub-tree to run when this task executes.")]
-    public BehaviourTree subtreeAsset;
-
-    public BehaviourTree RunningSubTree { get; private set; }
-
-    public override void OnStart()
+    [BonsaiNode("Tasks/", "TreeIcon")]
+    public class Include : Task
     {
-      if (subtreeAsset != null)
-      {
-        RunningSubTree = subtreeAsset;
-        RunningSubTree.actorGetter = Tree.actorGetter;
-        RunningSubTree.Start();
-      }
-    }
+        [Tooltip("The sub-tree to run when this task executes.")]
+        public BehaviourTree subtreeAsset;
 
-    public override void OnEnter()
-    {
-      RunningSubTree.BeginTraversal();
-    }
+        public BehaviourTree RunningSubTree { get; private set; }
 
-    public override void OnExit()
-    {
-      if (RunningSubTree.IsRunning())
-      {
-        RunningSubTree.Interrupt();
-      }
-    }
+        public override void OnStart()
+        {
+            if (subtreeAsset != null)
+            {
+                RunningSubTree = subtreeAsset;
+                RunningSubTree.actorGetter = Tree.actorGetter;
+                RunningSubTree.Start();
+            }
+        }
 
-    public override Status Run()
-    {
-      if (RunningSubTree != null)
-      {
-        RunningSubTree.Update();
-        return RunningSubTree.IsRunning()
-          ? Status.Running
-          : RunningSubTree.LastStatus();
-      }
+        public override void OnEnter()
+        {
+            RunningSubTree.BeginTraversal();
+        }
 
-      // No tree was included. Just fail.
-      return Status.Failure;
-    }
+        public override void OnExit()
+        {
+            if (RunningSubTree.IsRunning())
+            {
+                RunningSubTree.Interrupt();
+            }
+        }
 
-    public override void Description(StringBuilder builder)
-    {
-      if (subtreeAsset != null)
-      {
-        builder.AppendFormat("Include {0}", subtreeAsset.treeName);
-      }
-      else
-      {
-        builder.Append("Tree not set");
-      }
+        public override Status Run()
+        {
+            if (RunningSubTree != null)
+            {
+                RunningSubTree.Update();
+                return RunningSubTree.IsRunning() ? Status.Running : RunningSubTree.LastStatus();
+            }
+
+            // No tree was included. Just fail.
+            return Status.Failure;
+        }
+
+        public override void Description(StringBuilder builder)
+        {
+            if (subtreeAsset != null)
+            {
+                builder.AppendFormat("Include {0}", subtreeAsset.treeName);
+            }
+            else
+            {
+                builder.Append("Tree not set");
+            }
+        }
     }
-  }
 }

@@ -1,18 +1,17 @@
-﻿
-using Bonsai.Core;
+﻿using Bonsai.Core;
 
 namespace Bonsai.Standard
 {
-  /// <summary>
-  /// Negates the status of the child.
-  /// </summary>
-  [BonsaiNode("Decorators/", "Exclamation")]
-  public class Inverter : Decorator
-  {
-    public override Status Run()
+    /// <summary>
+    /// Negates the status of the child.
+    /// </summary>
+    [BonsaiNode("Decorators/", "Exclamation")]
+    public class Inverter : Decorator
     {
-      Status s = Iterator.LastChildExitStatus.GetValueOrDefault(Status.Success);
-      return s == Status.Failure ? Status.Success : Status.Failure;
+        public override Status Run()
+        {
+            Status s = Iterator.LastChildExitStatus.GetValueOrDefault(Status.Success);
+            return s == Status.Failure ? Status.Success : Status.Failure;
+        }
     }
-  }
 }

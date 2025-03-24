@@ -1,46 +1,44 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bonsai.Core
 {
-  public class BonsaiTreeComponent : MonoBehaviour
-  {
-    /// <summary>
-    /// The tree blueprint asset used.
-    /// </summary>
-    public BehaviourTree TreeBlueprint;
-
-    // Tree instance of the blueprint. This is a clone of the tree blueprint asset.
-    // The tree instance is what runs in game.
-    internal BehaviourTree treeInstance;
-
-    void Awake()
+    public class BonsaiTreeComponent : MonoBehaviour
     {
-      treeInstance.actorGetter = () => gameObject;
-    }
+        /// <summary>
+        /// The tree blueprint asset used.
+        /// </summary>
+        public BehaviourTree TreeBlueprint;
 
-    void Start()
-    {
-      treeInstance.Start();
-      treeInstance.BeginTraversal();
-    }
+        // Tree instance of the blueprint. This is a clone of the tree blueprint asset.
+        // The tree instance is what runs in game.
+        internal BehaviourTree treeInstance;
 
-    void Update()
-    {
-      treeInstance.Update();
-    }
+        void Awake()
+        {
+            treeInstance.actorGetter = () => gameObject;
+        }
 
-    void OnDestroy()
-    {
-      
-    }
+        void Start()
+        {
+            treeInstance.Start();
+            treeInstance.BeginTraversal();
+        }
 
-    /// <summary>
-    /// The tree instance running in game.
-    /// </summary>
-    public BehaviourTree Tree
-    {
-      get { return treeInstance; }
+        void Update()
+        {
+            treeInstance.Update();
+        }
+
+        void OnDestroy()
+        {
+        }
+
+        /// <summary>
+        /// The tree instance running in game.
+        /// </summary>
+        public BehaviourTree Tree
+        {
+            get { return treeInstance; }
+        }
     }
-  }
 }

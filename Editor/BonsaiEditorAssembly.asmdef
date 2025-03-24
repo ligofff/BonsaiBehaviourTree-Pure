@@ -1,18 +1,18 @@
 {
-    "name": "com.ligofff.BonsaiBehaviourTree-Pure.Editor",
-    "rootNamespace": "",
-    "references": [
-        "GUID:f12b1473fbbbd804b895981477fdf4e9"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "com.ligofff.BonsaiBehaviourTree-Pure.Editor",
+  "rootNamespace": "",
+  "references": [
+    "GUID:f12b1473fbbbd804b895981477fdf4e9"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }

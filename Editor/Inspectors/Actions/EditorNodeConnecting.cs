@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
 namespace Bonsai.Designer
 {
   public static class EditorNodeConnecting
@@ -30,3 +29,4 @@ namespace Bonsai.Designer
   }
 }
 */
+

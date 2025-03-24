@@ -3,11 +3,12 @@
 We use fairly "standard" github contribution workflow:
 
 1. Make an [Issue](https://github.com/ligofff/BonsaiBehaviourTree-Pure/issues/new)
-2. Fork this repository (For further details, see https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
+2. Fork this repository (For further details,
+   see https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
 3. Develop changes to a new branch to your forked repository
 4. Create a Pull Request from your forked repository against this repository
-   1. Insert a reference in the description to the issue created earlier eg. "Closes #1" where "1" is the issue number
-   2. Pull request description should answer these questions: "What has been changed" and "What is this for"
+    1. Insert a reference in the description to the issue created earlier eg. "Closes #1" where "1" is the issue number
+    2. Pull request description should answer these questions: "What has been changed" and "What is this for"
 
 Please note we have a code of conduct, please follow it in all your interactions with the project :smile:
 
@@ -15,11 +16,13 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 One way to develop this Unity package is to create a new Unity Project and copy this package to its Assets folder.
 
-This way .meta files (required by Unity) are generated automatically. Assets available in the package can now be tested and developed inside the project.
+This way .meta files (required by Unity) are generated automatically. Assets available in the package can now be tested
+and developed inside the project.
 
 After making changes you can test your package by eg. installing it via Git URL:
 
 Open `Packages/manifest.json` with your favorite text editor. Add following line to the dependencies block:
+
 ```json
     {
         "dependencies": {
@@ -137,7 +140,7 @@ Violating these terms may lead to a permanent ban.
 ### 4. Permanent Ban
 
 **Community Impact**: Demonstrating a pattern of violation of community
-standards, including sustained inappropriate behavior,  harassment of an
+standards, including sustained inappropriate behavior, harassment of an
 individual, or aggression toward or disparagement of classes of individuals.
 
 **Consequence**: A permanent ban from any sort of public interaction within

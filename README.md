@@ -1,24 +1,26 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > [!WARNING]  
-> This is WIP fork. I'm planning to rewrite it to pure C# classes instead of unity's objects. Of course, thanks [luis-l](https://github.com/luis-l) for it's wonderful base project!
+> This is WIP fork. I'm planning to rewrite it to pure C# classes instead of unity's objects. Of course,
+> thanks [luis-l](https://github.com/luis-l) for it's wonderful base project!
 
 ### Install via GIT URL
 
-Go to ```Package Manager``` -> ```Add package from GIT url...``` -> Enter ```https://github.com/ligofff/BonsaiBehaviourTree-Pure.git``` -> Click ```Add```
+Go to ```Package Manager``` -> ```Add package from GIT url...``` ->
+Enter ```https://github.com/ligofff/BonsaiBehaviourTree-Pure.git``` -> Click ```Add```
 
 You will need to have Git installed and available in your system's PATH.
 
-
 ## Bonsai Behaviour Tree (Obsolete description)
 
-![Bonsai Logo](https://i.imgur.com/WTxGOZC.png) 
+![Bonsai Logo](https://i.imgur.com/WTxGOZC.png)
 
 Advanced behavior tree solution with a graphical editor
 
 ![Bonsai Editor](https://i.imgur.com/KQZgWtF.png)
 
 Goals of the project
+
 - Lightweight, robust, and fast behaviour trees.
 - Visual editor to build and view behaviour trees.
 - Seamless integration with the Unity workflow/environment.
@@ -41,11 +43,14 @@ Behaviour tree running.
 
 ### Editor Features and Limitations
 
-During Play mode you can view how the a tree executes and see which nodes are running, the statuses returned (sucesss, failure, aborted, interrupted).
+During Play mode you can view how the a tree executes and see which nodes are running, the statuses returned (sucesss,
+failure, aborted, interrupted).
 
-You can also edit certain properties of a node, like changing the abort type, or setting a new waiting time for the wait task via the Unity Inspector.
+You can also edit certain properties of a node, like changing the abort type, or setting a new waiting time for the wait
+task via the Unity Inspector.
 
 Things that cannot be currently edited in Play mode:
+
 - Add or delete nodes
 - Changing the root
 - Changing connections between nodes
@@ -58,25 +63,27 @@ Things that cannot be currently edited in Play mode:
 - Sub-tree dragging - when you drag a node, the entire sub-tree under it drags along.
 - Save and load behaviour tree assets.
 - Attributes which can be used on a custom node class to categorize and add an icon to your custom node.
-- A simple [nicify](https://twitter.com/i/status/855851944103092224) feature which automatically lays out the tree neatly.
+- A simple [nicify](https://twitter.com/i/status/855851944103092224) feature which automatically lays out the tree
+  neatly.
 - Multiple behaviour tree editors can be opened at once.
 - Viewing a running behaviour tree just requires clicking on a game object with behaviour tree component.
 - Behaviour tree assets can be opened by double clicking on the asset file.
 - Editor Preferences to change editor behaviour. Node look can be customized. Colors, size, and layouts can be changed.
-- View variables when tree is running. e.g. The time left for the Wait Task. 
+- View variables when tree is running. e.g. The time left for the Wait Task.
 
 ### API and Custom Tasks
 
 These are the base nodes which can be extended:
 
 - Composite
-  - Parallel
+    - Parallel
 - Decorator
-  - Services
-  - Conditional Abort
+    - Services
+    - Conditional Abort
 - Task
 
 In order to add custom functionality you can override key methods:
+
 ```csharp
     // Called only once when the tree is started.
     public virtual void OnStart() { }
@@ -96,7 +103,9 @@ In order to add custom functionality you can override key methods:
     // Call when a child finished executing
     public virtual void OnChildExit(int childIndex, Status childStatus) { }
 ```
+
 Example of a simple, custom Wait task:
+
 ```csharp
     [BonsaiNode("Tasks/", "Timer")]
     public class Wait : Task
@@ -125,7 +134,8 @@ Example of a simple, custom Wait task:
 
 ### Performance
 
-This is a benchmark running 5000 trees. No GC after startup. The tree in the image is the tree used for benchmark. Tested on a Intel Core i7-4790 @ 4 GHz. (Windows)
+This is a benchmark running 5000 trees. No GC after startup. The tree in the image is the tree used for benchmark.
+Tested on a Intel Core i7-4790 @ 4 GHz. (Windows)
 
 ![Performance Benchmark](http://i.imgur.com/hm0yHM1.png)
 
@@ -133,23 +143,29 @@ The same benchmark was run on a Linux laptop. Intel i5-6200U @ 2.30 GHz. The "Ti
 
 ### Limitations
 
-Since the goal of this project was a lightweight system, a complete, built-in functionality for serialization is not provided. The tree and blackboard structure is saved as an asset, but changing data values will not be persistent between game runs. For example, if you have a blackboard variable ["timer", 0.0f] and during the game run, the value goes up to say 10.0, you would need to save and load that value manually so its persistent between game saves.
+Since the goal of this project was a lightweight system, a complete, built-in functionality for serialization is not
+provided. The tree and blackboard structure is saved as an asset, but changing data values will not be persistent
+between game runs. For example, if you have a blackboard variable ["timer", 0.0f] and during the game run, the value
+goes up to say 10.0, you would need to save and load that value manually so its persistent between game saves.
 
 ### Old Screenshots and videos
 
 [![Bonsai Behaviour Tree Showcase](https://i.imgur.com/Cuddqco.png)](https://www.youtube.com/watch?v=BL6TUJwAFWg)
 
 Videos:
+
 - [Quick showcase of multiple features](https://twitter.com/i/status/866473174577401856)
 - [Simple demo with agents](https://twitter.com/i/status/865356769572384776)
 - [Nicify tree](https://twitter.com/i/status/855851944103092224)
 - [Multi-Selection Actions](https://twitter.com/i/status/866830814234980352)
 - [Interrupts and Guards](https://twitter.com/i/status/867516094537510912)
 
-The IsKeyDown decorator has a lower priority abort type set, so the sub-trees to the right are highlighted since they can be aborted by the decorator.
+The IsKeyDown decorator has a lower priority abort type set, so the sub-trees to the right are highlighted since they
+can be aborted by the decorator.
 
 ![Priority Abort](http://i.imgur.com/S7SVlja.png)
 
-Here the semaphore guards are linked which highlight in orange, you can also see the custom inspector for the guard, making it easy to link other guards together.
+Here the semaphore guards are linked which highlight in orange, you can also see the custom inspector for the guard,
+making it easy to link other guards together.
 
 ![Guards](http://i.imgur.com/9w3f1PE.png)

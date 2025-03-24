@@ -143,10 +143,7 @@ namespace Bonsai.Core
     /// <summary>
     /// The game object associated with the tree of this node.
     /// </summary>
-    protected GameObject Actor
-    {
-      get { return treeOwner.actor; }
-    }
+    protected object Actor => treeOwner.actorGetter?.Invoke();
 
     public abstract BehaviourNode GetChildAt(int index);
     public abstract int ChildCount();

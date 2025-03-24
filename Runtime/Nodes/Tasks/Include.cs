@@ -18,7 +18,6 @@ namespace Bonsai.Standard
       if (subtreeAsset != null)
       {
         RunningSubTree = subtreeAsset;
-        RunningSubTree.actor = Actor;
         RunningSubTree.actorGetter = Tree.actorGetter;
         RunningSubTree.Start();
       }

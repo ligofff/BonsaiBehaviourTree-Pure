@@ -41,12 +41,6 @@ namespace Bonsai.Core
       get { return allNodes.Length == 0 ? null : allNodes[0]; }
     }
 
-    /// <summary>
-    /// <para>The game object actor associated with the tree.</para>
-    /// <para>Field is optional. The tree core can run without the actor.</para>
-    /// </summary>
-    public GameObject actor;
-
     public Func<object> actorGetter;
 
     public string treeName;

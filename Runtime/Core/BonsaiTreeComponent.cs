@@ -16,7 +16,7 @@ namespace Bonsai.Core
 
     void Awake()
     {
-      treeInstance.actor = gameObject;
+      treeInstance.actorGetter = () => gameObject;
     }
 
     void Start()

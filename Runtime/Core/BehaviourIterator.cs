@@ -74,6 +74,10 @@ namespace Bonsai.Core
             int index = traversal.Peek();
             BehaviourNode node = tree.Nodes[index];
             BehaviourNode.Status s = node.Run();
+            
+            node.LatestStatus = s;
+            node.LatestStatusString = "not_implemented";
+            node.NodeStatusChanged?.Invoke(node);
 
             LastExecutedStatus = s;
 

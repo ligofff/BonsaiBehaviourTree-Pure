@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using UnityEngine;
 
 namespace Bonsai.Core
@@ -30,6 +31,10 @@ namespace Bonsai.Core
 
         public BehaviourNode Parent { get; internal set; }
         public BehaviourIterator Iterator { get; internal set; }
+
+        public Status LatestStatus;
+        public string LatestStatusString;
+        public Action<BehaviourNode> NodeStatusChanged;
 
         /// <summary>
         /// The order of the node relative to its parent.
